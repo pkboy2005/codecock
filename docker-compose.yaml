@@ -1,4 +1,4 @@
-version: '2'
+version: '3.8'  # Updated to version 3.8, which is a more recent version
 
 services:
   frontend:
@@ -16,7 +16,6 @@ services:
     build:
       context: .
       dockerfile: backend/Dockerfile
-   
     networks:
       - app-network
 
