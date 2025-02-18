@@ -9,7 +9,7 @@ const connectDB = async () => {
     });
     // mongoose.connect("mongodb://127.0.0.1:27017/codeIDE");
     console.log("MongoDB connected");
-    console.log(process.env.MONGODB_URL);
+
     
   } catch (error) {
     console.log("MongoDB not connected",error)
