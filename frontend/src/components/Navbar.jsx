@@ -11,7 +11,7 @@ const Navbar = () => (
         </div>
         <div className="flex flex-col">
           <span className="text-lg font-semibold bg-gradient-to-r from-blue-400 via-blue-300 to-purple-400 text-transparent bg-clip-text">
-            CodeBase
+            KodeBase
           </span>
           <span className="text-xs text-blue-400/60 font-medium">
             Interactive Code Editor
