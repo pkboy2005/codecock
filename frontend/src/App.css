@@ -1,5 +1,5 @@
 body{
-  background-color: #000000;
+  background-color: #313148;
   color: #fff;
 }
 
@@ -39,7 +39,7 @@ body{
 }
 
 .projects .project:hover{
-  background-color: #000000;
+  background-color: #444242;
   border: 1px solid #0f0e0e;
 }
 
