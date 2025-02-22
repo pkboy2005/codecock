@@ -193,7 +193,7 @@ const Home = () => {
   return (
     <>
       <Navbar />
-      <div className="flex items-center px-[100px] justify-between mt-5">
+      <div className=" flex items-center px-[100px] justify-between mt-5">
         {/* <h3 className='text-2xl'>👋 Hi, Piyush</h3> */}
         <h3 className='text-2xl'>👋 Hi, {fullName}</h3>
         <div className="flex items-center">
@@ -201,12 +201,12 @@ const Home = () => {
         </div>
       </div>
 
-      <div className="projects px-[100px] mt-5 pb-10">
+      <div className="rounded-2xl projects px-[100px] mt-5 pb-10">
 
         {
           projects && projects.length > 0 ? projects.map((project, index) => {
             return <>
-              <div className="project w-full p-[15px] flex items-center justify-between bg-[#0f0e0e]">
+              <div className="rounded-2xl bg-[#1d1d2d] border-[5px] border-[#1d1d2d] project w-full p-[15px] flex items-center justify-between bg-[#1d1d2d]">
                 <div onClick={() => { navigate("/editior/" + project._id) }} className='flex w-full items-center gap-[15px]'>
                   {
                     project.projLanguage === "python" ?
@@ -242,7 +242,7 @@ const Home = () => {
                     setEditProjId(project._id);
                     setName(project.name);
                   }}>Edit</button>
-                  <button onClick={() => { deleteProject(project._id) }} className="btnNormal bg-red-500 transition-all hover:bg-red-600">Delete</button>
+                  <button onClick={() => { deleteProject(project._id) }} className="btnNormal bg-[#3f3f96] transition-all hover:bg-teal-500">Delete</button>
                 </div>
               </div>
             </>
