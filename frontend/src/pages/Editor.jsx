@@ -100,7 +100,7 @@ const Editor = () => {
         files: [
           {
             filename: data.name + data.projLanguage === "python" ? ".py" : data.projLanguage === "java" ? ".java" : data.projLanguage === "javascript" ? ".js" : data.projLanguage === "c" ? ".c" : data.projLanguage === "cpp" ? ".cpp" : data.projLanguage === "bash" ? ".sh" : "",
-            content: code
+            content: codeō
           }
         ]
       })
@@ -114,28 +114,26 @@ const Editor = () => {
   return (
     <>
       <Navbar />
-      <div className="flex items-center justify-between" style={{ height: 'calc(100vh - 90px)' }}>
-        <div className="left w-[50%] h-full">
+      <div className="rounded-2xl flex items-center justify-between" style={{ height: 'calc(100vh - 90px)' }}>
+        <div className="w-[50%] h-full m-4 p-4 bg-[#27272a] rounded-2xl border-[5px] border-[#333351]">
           <Editor2
-            onChange={(newCode) => {
-              console.log('New Code:', newCode); // Debug: Log changes
-              setCode(newCode || ''); // Update state
-            }}
-            theme="vs-dark"
-            height="100%"
-            width="100%"
-            language="python"
-            value={code} // Bind editor to state
+              onChange={(newCode) => setCode(newCode || '')}
+              theme="vs-dark"
+              height="100%"
+              width="100%"
+              language="python"
+              value={code}
           />
         </div>
-        <div className="right p-[15px] w-[50%] h-full bg-[#27272a]">
-          <div className="flex pb-3 border-b-[1px] border-b-[#1e1e1f] items-center justify-between px-[30px]">
-            <p className="p-0 m-0">Output</p>
+
+        <div className="   mr-5 rounded-2xl right p-[15px] w-[50%] h-full bg-[#27272a]">
+          <div className="rounded-2xl flex pb-3 border-b-[1px] border-b-[#1e1e1f] items-center justify-between px-[30px]">
+            <p className="rounded-2xl p-0 m-0">Output</p>
             <button
-              className="btnNormal !w-fit !px-[20px] bg-blue-500 transition-all hover:bg-blue-600"
+              className="btnNormal !w-fit !px-[20px] bg-[#3f3f96] transition-all hover:bg-[#1d1d2d]"
               onClick={runProject} // Save when clicking the button
             >
-              run
+              Run
             </button>
 
           </div>
