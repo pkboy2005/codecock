@@ -100,7 +100,7 @@ const Editor = () => {
         files: [
           {
             filename: data.name + data.projLanguage === "python" ? ".py" : data.projLanguage === "java" ? ".java" : data.projLanguage === "javascript" ? ".js" : data.projLanguage === "c" ? ".c" : data.projLanguage === "cpp" ? ".cpp" : data.projLanguage === "bash" ? ".sh" : "",
-            content: codeō
+            content: code
           }
         ]
       })
@@ -117,7 +117,10 @@ const Editor = () => {
       <div className="rounded-2xl flex items-center justify-between" style={{ height: 'calc(100vh - 90px)' }}>
         <div className="w-[50%] h-full m-4 p-4 bg-[#27272a] rounded-2xl border-[5px] border-[#333351]">
           <Editor2
-              onChange={(newCode) => setCode(newCode || '')}
+              onChange={(newCode) => {
+              console.log('New Code:', newCode); // Debug: Log changes
+              setCode(newCode || ''); // Update state
+            }}
               theme="vs-dark"
               height="100%"
               width="100%"
