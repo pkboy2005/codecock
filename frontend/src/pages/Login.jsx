@@ -1,18 +1,22 @@
-import React, { useState } from 'react';
-import logo from "../images/logos/logo.png"
-import { Link, useNavigate } from 'react-router-dom';
+import React, { useState, useRef } from 'react';
+import logo from "../images/logos/logo.png";
+import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { api_base_url } from '../helper';
+import useButtonLoader from './useButtonLoader';
 
 const Login = () => {
-
   const [email, setEmail] = useState("");
   const [pwd, setPwd] = useState("");
-
-  const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(false);
+  const buttonRef = useRef(null); // Ref to the button
+  const { startLoading, stopLoading } = useButtonLoader();
 
   const submitForm = (e) => {
     e.preventDefault();
+    setIsLoading(true);
+    startLoading(buttonRef.current); // Start loading animation
+
     fetch(api_base_url + "/login", {
       mode: "cors",
       method: "POST",
@@ -23,18 +27,26 @@ const Login = () => {
         email: email,
         pwd: pwd
       })
-    }).then(res => res.json()).then(data => {
-      if (data.success) {
-        localStorage.setItem("token", data.token);
-        localStorage.setItem("fullName",data.fullName);
-        localStorage.setItem("isLoggedIn", true);
-        window.location.href = "/"
-      }
-      else {
-        toast.error(data.msg);
-      }
     })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          localStorage.setItem("token", data.token);
+          localStorage.setItem("isLoggedIn", true);
+          window.location.href = "/";
+        } else {
+          toast.error(data.msg);
+        }
+      })
+      .catch((error) => {
+        toast.error("An error occurred. Please try again.");
+      })
+      .finally(() => {
+        setIsLoading(false);
+        stopLoading(buttonRef.current); // Stop loading animation
+      });
   };
+
   return (
     <>
       <div className="con flex flex-col items-center justify-center min-h-screen">
@@ -51,11 +63,17 @@ const Login = () => {
 
           <p className='text-[gray] text-[14px] mt-3 self-start'>Don't have an account <Link to="/signUp" className='text-blue-500'>Sign Up</Link></p>
 
-          <button className="btnNormal mt-3 bg-blue-500 transition-all hover:bg-blue-600">Login</button>
+          <button
+            ref={buttonRef}
+            className="btnNormal mt-3 bg-blue-500 transition-all hover:bg-blue-600"
+            type="submit"
+          >
+            Login
+          </button>
         </form>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default Login
+export default Login;
