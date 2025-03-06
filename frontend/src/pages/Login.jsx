@@ -33,6 +33,7 @@ const Login = () => {
         if (data.success) {
           localStorage.setItem("token", data.token);
           localStorage.setItem("isLoggedIn", true);
+          localStorage.setItem("fullName",data.fullName);
           window.location.href = "/";
         } else {
           toast.error(data.msg);
