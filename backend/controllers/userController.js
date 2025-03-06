@@ -79,14 +79,13 @@ exports.login = async (req, res) => {
       if (result) {
 
         let token = jwt.sign({ userId: user._id }, secret)
-        console.log(user.fullname);
+
         return res.status(200).json({
           success: true,
           msg: "User logged in successfully",
           token,
           fullName : user.fullName
         });
-        console.log(user.fullname);
       }
       else {
         return res.status(401).json({
